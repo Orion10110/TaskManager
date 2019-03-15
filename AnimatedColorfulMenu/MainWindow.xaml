@@ -1,0 +1,42 @@
+﻿<Window x:Class="AnimatedColorfulMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimatedColorfulMenu"
+        xmlns:domain="clr-namespace:AnimatedColorfulMenu.Models"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" WindowState="Minimized" Closed="Window_Closed" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="637*"/>
+            <ColumnDefinition Width="437*"/>
+        </Grid.ColumnDefinitions>
+        <!-- and here's another -->
+        <ListView x:Name="listViewProcess" DataContext="{Binding Path=processes}" Margin="0,31,10,36" HorizontalAlignment="Right" Width="617" SelectionChanged="listViewProcess_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">ID</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=User}" Width="100">User</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Width="100">Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Memory}" Width="100">Memory</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Priority}" Width="100">Priority</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Threads}" Width="100">Threads</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="listViewThreads" Margin="10,10,0,0" Height="373" VerticalAlignment="Top" HorizontalAlignment="Left" Width="332" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Width="100">Thread ID</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=BasePriority}" Width="100">Thread Priority</GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Count" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="47,10,0,0" TextWrapping="Wrap" x:Name="let" Text="{Binding Path=Count}" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
